@@ -1,1 +1,1 @@
-web: npm --chdir frontend react-scripts start
+web: npm start
