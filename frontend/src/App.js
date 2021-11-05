@@ -12,7 +12,7 @@ function App() {
 	const [state, setState] = useState({})
 
 	useEffect(() => {
-		axios.get("http://127.0.0.1:8000/frontend/index").then(response => {
+		axios.get("https://orion-crepe.herokuapp.com/frontend/index").then(response => {
 			if (response.status == 200){
 				return response.json()
 			}
