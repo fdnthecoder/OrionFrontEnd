@@ -4,7 +4,9 @@ import {Switch, Route} from 'react-router-dom';
 import Header from './Components/Header/Header';
 import Login from './Pages/Login/Login';
 import Profile from './Pages/Profile/Profile';
-//import React, { useEffect, useState } from 'react';
+import Home from './Pages/Home/Home';
+import 'bootstrap/dist/css/bootstrap.min.css'
+//import { useEffect, useState } from 'react';
 //import axios from 'axios'
 
 class App extends Component{
@@ -16,7 +18,7 @@ class App extends Component{
 				<Switch>
 					<Route path='/login' component={Login}/>
 					<Route path='/profile' component={Profile}/>
-					<Route exact path='/' render={() => <h1>Hello Gang!</h1>}/>
+					<Route exact path='/' component={Home}/>
 				</Switch>
 			</div>
 		);

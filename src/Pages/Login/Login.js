@@ -1,5 +1,8 @@
 import React from 'react'
-import logoURL from '../../Assets/logo.png'
+import logoURL from '../../Assets/logo-black.png'
+import Image from 'react-bootstrap/Image'
+import Button from 'react-bootstrap/Button'
+import Form from 'react-bootstrap/Form'
 import './Login.css'
 
 class Login extends React.Component{
@@ -8,18 +11,22 @@ class Login extends React.Component{
             <div className="login-body">
                 <div className="login-div">
                     <div>
-                        <img src={logoURL} alt = "logo"/>
-                    </div>
-                    <div>
-                        <form>
-                            <input type='username' name='user' placeholder='username' required />
-                            <input type='password' name='pwd' placeholder='password' required />
-                            <button>
+                        <Image src={logoURL} width="200" height="200"/>
+                        <Form>
+                            <Form.Group>
+                                <Form.Label>Username</Form.Label>
+                                <Form.Control type="username" placeholder="Username" />
+                            </Form.Group>   
+                            <Form.Group>
+                                <Form.Label>Password</Form.Label>
+                                <Form.Control type="password" placeholder="Password" />
+                            </Form.Group>
+                            <br />   
+                            <Button variant="outline-dark" type="submit">
                                 Login
-                            </button>
-                        </form>
+                            </Button>{' '}
+                        </Form>
                     </div>
-
                 </div>
             </div>
         );

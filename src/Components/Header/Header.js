@@ -1,29 +1,29 @@
 import React from 'react'
-import './Header.css'
-import { NavLink} from 'react-router-dom'
+    import './Header.css'
+import Navbar from 'react-bootstrap/Navbar'
+import Nav from 'react-bootstrap/Nav'
+import Container from 'react-bootstrap/Container'
 import logoURL from '../../Assets/logo.png'
 
 const Header = () => {
     return(
-        <nav>
-            <div className="header">
-                <div>
-                    <NavLink to='/' className="navLink"> <img src={logoURL} alt = "logo"/></NavLink>
-                </div>
-                <div>
-                    <NavLink to='' className='navLink'>Companies</NavLink>
-                </div>
-                <div>
-                    <NavLink to='' className='navLink'>Internships</NavLink>
-                </div>
-                <div>
-                    <NavLink to='/login' className='navLink'>Login</NavLink>
-                </div>
-                <div>
-                    <NavLink to='/profile' className='navLink'>Profile</NavLink>
-                </div>
-            </div>
-        </nav>
+        <Navbar bg="dark" variant="dark">
+            <Container>
+                <Navbar.Brand href="/">
+                    <img src={logoURL} alt="logo" width="30" height="30" className="d-inline-block align-top" />{' '}
+                    Orion
+                </Navbar.Brand>
+                <Navbar.Toggle aria-controls="basic-navbar-nav" />
+                <Nav className="me-auto">
+                    <Nav.Link href="">Companies</Nav.Link>
+                    <Nav.Link href="">Internships</Nav.Link>
+                </Nav >
+                <Nav>
+                    <Nav.Link href="/login">Login</Nav.Link>
+                    <Nav.Link href="/profile">Profile</Nav.Link>
+                </Nav>
+            </Container>
+        </Navbar>
     );
 }
 
