@@ -1,14 +1,20 @@
 {
-    "name": "OrionFrontEnd",
-    "version": "0.1.0",
-    "proxy": "https://orion-crepe-frontend.herokuapp.com/",
-    "private": true,
-    "engines": {
-      "node": "14.x"
-    },
-    "scripts": {
-      "test": "echo \"Error: no test specified\" && exit 1",
-      "heroku-prebuild": "cd frontend && npm install && npm run build",
-      "start-web": "node index.js"
-    }
+  "name": "OrionFrontEnd",
+  "version": "0.1.0",
+  "proxy": "https://orion-crepe-frontend.herokuapp.com/",
+  "private": true,
+  "engines": {
+    "node": "14.x"
+  },
+  "scripts": {
+    "start": "cd frontend && npm start",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "heroku-prebuild": "cd frontend && npm install && npm run build",
+    "start-web": "node index.js"
+  },
+  "dependencies": {
+    "axios": "^0.24.0",
+    "bootstrap": "^5.1.3",
+    "react-bootstrap": "^2.0.2"
   }
+}
