@@ -7,6 +7,7 @@ import Profile from './Pages/Profile/Profile';
 import {Test} from "./Components/Test/Test"
 import { useEffect, useState } from 'react';
 import axios from 'axios'
+import 'bootstrap/dist/css/bootstrap.min.css'
 
 function App() {
 	const [state, setState] = useState({})
