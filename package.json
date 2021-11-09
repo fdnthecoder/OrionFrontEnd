@@ -12,4 +12,9 @@
     "heroku-prebuild": "cd frontend && npm install && npm run build",
     "start-web": "node index.js"
   },
+  "dependencies": {
+    "axios": "^0.24.0",
+    "bootstrap": "^5.1.3",
+    "react-bootstrap": "^2.0.2"
+  }
 }
