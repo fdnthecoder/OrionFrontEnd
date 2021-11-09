@@ -13,7 +13,7 @@ function App() {
 	const [state, setState] = useState({})
 
 	useEffect(() => {
-		axios.get("https://orion-crepe.herokuapp.com/").then(response => {
+		axios.get("https://orion-crepe.herokuapp.com/hello").then(response => {
 			if (response.status == 200){
 				return response.json()
 			}
