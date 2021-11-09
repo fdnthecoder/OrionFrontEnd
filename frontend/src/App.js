@@ -22,7 +22,7 @@ function App() {
 				console.log(response.statusText);
 				console.log(response.headers);
 				console.log(response.config);
-				return response.statusText
+				return response.data
 			}
 		}).then(data => setState(data))
 		.then(error => console.log(error))
