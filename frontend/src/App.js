@@ -4,7 +4,9 @@ import {Switch, Route} from 'react-router-dom';
 import Header from './Components/Header/Header';
 import Login from './Pages/Login/Login';
 import Profile from './Pages/Profile/Profile';
-import {Test} from "./Components/Test/Test"
+import Internships from "./Pages/Internships/Internships";
+import {Test} from "./Components/Test/Test";
+import Home from './Pages/Home/Home';
 import { useEffect, useState } from 'react';
 import axios from 'axios'
 import 'bootstrap/dist/css/bootstrap.min.css'
@@ -23,13 +25,13 @@ function App() {
 
 	return (
 		<div className="App">
-
 			<Test prop={state}/>
 			<Header />
 			<Switch>
+				<Route path='/internships' component={Internships} />
 				<Route path='/login' component={Login}/>
 				<Route path='/profile' component={Profile}/>
-				<Route exact path='/' render={() => <h1><Test prop={state}/></h1>}/>
+				<Route path='/' component={Home}/>
 			</Switch>
 		</div>
 	);
