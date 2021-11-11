@@ -1,24 +1,28 @@
 import React from 'react'
-import Container from 'react-bootstrap/Container'
-import Card from "react-bootstrap/Card"
+import  { Image, Carousel, Container } from 'react-bootstrap'
+import bannerURL from "../../Assets/banner.jpg"
 import backgroundURL from "../../Assets/background.jpg"
-//import Carousel from 'react-bootstrap/Carousel'
 
 class Home extends React.Component{
     render(){
         return(
             <Container className="me-auto">
-                <Card className="bg-dark text-white">
-                    <Card.Img src={backgroundURL} alt="Card image" />
-                    <Card.ImgOverlay>
-                        <Card.Title>Who we are</Card.Title>
-                        <Card.Text>
-                            This is a wider card with supporting text below as a natural lead-in to
-                            additional content. This content is a little bit longer.
-                        </Card.Text>
-                        <Card.Text>Last updated 3 mins ago</Card.Text>
-                    </Card.ImgOverlay>
-                </Card>
+                <Carousel fade className="bg-dark text-white">
+                    <Carousel.Item>
+                        <Image width="100%" height="250px" src={bannerURL} alt="background"/>
+                        <Carousel.Caption>
+                            <h3>Our mission</h3>
+                            <p>Connecting users to their internship through the stars</p>
+                        </Carousel.Caption>
+                    </Carousel.Item>
+                    <Carousel.Item>
+                        <Image width="100%" height="250px" src={backgroundURL} alt="background"/>
+                        <Carousel.Caption>
+                            <h3>Our mission</h3>
+                            <p>Connecting users to their internship through the stars</p>
+                        </Carousel.Caption>
+                    </Carousel.Item>
+                </Carousel>
             </Container>
         );
     }

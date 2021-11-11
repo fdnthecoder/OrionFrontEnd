@@ -1,13 +1,11 @@
 import React from 'react'
 import './Header.css'
-import Navbar from 'react-bootstrap/Navbar'
-import Nav from 'react-bootstrap/Nav'
-import Container from 'react-bootstrap/Container'
 import logoURL from '../../Assets/logo.png'
+import { Container, NavDropdown, Navbar, Nav } from 'react-bootstrap'
 
 const Header = () => {
     return(
-        <Navbar bg="dark" variant="dark">
+        <Navbar fixed="top" bg="dark" variant="dark">
             <Container>
                 <Navbar.Brand href="/">
                     <img src={logoURL} alt="logo" width="30" height="30" className="d-inline-block align-top" />{' '}
@@ -19,8 +17,13 @@ const Header = () => {
                     <Nav.Link href="/internships">Internships</Nav.Link>
                 </Nav >
                 <Nav>
-                    <Nav.Link href="/login">Login</Nav.Link>
-                    <Nav.Link href="/profile">Profile</Nav.Link>
+                    <NavDropdown title="User" id="basic-nav-dropdown">
+                        <NavDropdown.Item href="/login">Login</NavDropdown.Item>
+                        <NavDropdown.Item href="/profile">Profile</NavDropdown.Item>
+                        <NavDropdown.Item href="">Settings</NavDropdown.Item>
+                        <NavDropdown.Divider />
+                        <NavDropdown.Item href="">Logout</NavDropdown.Item>
+                    </NavDropdown>
                 </Nav>
             </Container>
         </Navbar>
