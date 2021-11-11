@@ -1,11 +1,12 @@
 import React from 'react'
+import { Container } from 'react-bootstrap'
 
 class Manager extends React.Component{
     render() {
         return(
-            <div>
-
-            </div>
+            <Container>
+                
+            </Container>
         )
     }
 }

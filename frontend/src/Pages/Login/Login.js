@@ -10,8 +10,8 @@ class Login extends React.Component{
         return(
             <div className="login-body">
                 <div className="login-div">
+                    <Image src={logoURL} width="200" height="200"/>
                     <div>
-                        <Image src={logoURL} width="200" height="200"/>
                         <Form>
                             <Form.Group>
                                 <Form.Label>Username</Form.Label>
@@ -22,11 +22,11 @@ class Login extends React.Component{
                                 <Form.Control type="password" placeholder="Password" />
                             </Form.Group>
                             <br />   
-                            <Button variant="outline-dark" type="submit">
+                            <Button text-align="center" variant="outline-dark" type="submit">
                                 Login
                             </Button>{' '}
                         </Form>
-                        
+                        <a href="/register">Don't have an account? Register here</a>
                     </div>
                 </div>
             </div>

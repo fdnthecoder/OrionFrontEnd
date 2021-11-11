@@ -5,6 +5,7 @@ import Header from './Components/Header/Header';
 import Login from './Pages/Login/Login';
 import Profile from './Pages/Profile/Profile';
 import Internships from "./Pages/Internships/Internships";
+import Register from "./Pages/Register/Register";
 import {Test} from "./Components/Test/Test";
 import Home from './Pages/Home/Home';
 import { useEffect, useState } from 'react';
@@ -36,6 +37,7 @@ function App() {
 				<Route path='/internships' component={Internships} />
 				<Route path='/login' component={Login}/>
 				<Route path='/profile' component={Profile}/>
+				<Route path='/register' component={Register}/>
 				<Route path='/' component={Home}/>
 			</Switch>
 		</div>

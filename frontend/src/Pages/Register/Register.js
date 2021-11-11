@@ -1,6 +1,7 @@
 import React from "react"
 import Button from 'react-bootstrap/Button'
 import Form from 'react-bootstrap/Form'
+import "./Register.css"
 
 class Register extends React.Component{
     render(){
@@ -17,6 +18,10 @@ class Register extends React.Component{
                             <Form.Group>
                                 <Form.Label>Password</Form.Label>
                                 <Form.Control type="password" placeholder="Password" />
+                            </Form.Group>
+                            <Form.Group>
+                                <Form.Label>Confirm your password</Form.Label>
+                                <Form.Control type="password" placeholder="Confirm Password" />
                             </Form.Group>
                             <br />   
                             <Button variant="outline-dark" type="submit">
