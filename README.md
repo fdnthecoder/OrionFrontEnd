@@ -6,6 +6,11 @@ This repo serves as the side that the client sees. It has a separate heroku appl
 
 ### `npm start`
 
+## Run through Heroku 
+
+## ` https://orion-crepe-frontend.herokuapp.com/`
+
+
 ## Backend Repo
 
 ### `https://github.com/fdnthecoder/Orion`

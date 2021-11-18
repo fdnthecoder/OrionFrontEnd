@@ -4,6 +4,7 @@ import Image from 'react-bootstrap/Image'
 import Button from 'react-bootstrap/Button'
 import Form from 'react-bootstrap/Form'
 import './Login.css'
+import { responsivePropType } from 'react-bootstrap/esm/createUtilityClasses'
 
 class Login extends React.Component{
     render(){
