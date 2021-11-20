@@ -31,7 +31,7 @@ class Register extends React.Component{
         alert("a password has been submitted: ", this.state.password)
         event.preventDefault();
         //https://orion-crepe.herokuapp.com
-        axios.post("http://127.0.0.1:8000/user", {
+        axios.post("https://orion-crepe.herokuapp.com/user", {
             username: this.state.username,
             password: this.state.password,
         }).then((response) => {
