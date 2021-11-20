@@ -17,7 +17,10 @@ function App() {
 
 	useEffect(() => {
 		axios.get("https://orion-crepe.herokuapp.com/hello").then(response => {
-			console.log(response.data);
+			if (response.status == 200){
+				console.log(response.data);
+				return response.data
+			}
 		}).then(data => setState(data))
 		.then(error => console.log(error))
 	},[])
