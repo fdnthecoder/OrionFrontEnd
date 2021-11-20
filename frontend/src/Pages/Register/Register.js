@@ -9,28 +9,24 @@ class Register extends React.Component{
     constructor (props){
         super(props);
         this.state = {
-            username: "",
-            password: "",
+            username: "", 
+            password: ""
         };
-        this.onChangeUsername = this.onChangeUsername.bind(this);
-        this.onChangePassword = this.onChangePassword.bind(this)
+        this.changeUsername = this.changeUsername.bind(this);
+        this.changePassword = this.changePassword.bind(this);
         this.onClick = this.onClick.bind(this);
     }
 
-    onChangeUsername(event){
-        this.setState({ username: event.target.username });
-        console.log(event.target.username)
+    changeUsername(event, value){
+        this.setState({ username: event.target.value});
     }
 
-    onChangePassword(event){
-        this.setState({ password: event.target.password});
-        console.log(event.target.password)
+    changePassword(event){
+        this.setState({ password: event.target.value});
+
     }
     onClick(event) {
-        alert('A name was submitted: ' + this.state.username);
-        alert("a password has been submitted: ", this.state.password)
         event.preventDefault();
-        //https://orion-crepe.herokuapp.com
         axios.post("https://orion-crepe.herokuapp.com/user", {
             username: this.state.username,
             password: this.state.password,
@@ -53,11 +49,11 @@ class Register extends React.Component{
                         <Form onSubmit = {this.onClick}>
                             <Form.Group>
                                 <Form.Label>Username</Form.Label>
-                                <Form.Control type="username" value={this.state.username} onChange={event => this.onChangeUsername(event)}  placeholder="Username" />
+                                <Form.Control type="username"  onChange={this.changeUsername}  placeholder="Username" />
                             </Form.Group>   
                             <Form.Group>
                                 <Form.Label>Password</Form.Label>
-                                <Form.Control type="password" value= {this.state.password} onChange={event => this.onChangePassword(event)} placeholder="Password" />
+                                <Form.Control type="password" onChange={this.changePassword} placeholder="Password" />
                             </Form.Group>
                             <Form.Group>
                                 <Form.Label>Confirm your password</Form.Label>
