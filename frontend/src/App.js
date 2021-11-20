@@ -17,7 +17,7 @@ function App() {
 
 	useEffect(() => {
 		axios.get("https://orion-crepe.herokuapp.com/hello").then(response => {
-			console.log(response.data);;
+			console.log(response.data);
 		}).then(data => setState(data))
 		.then(error => console.log(error))
 	},[])
