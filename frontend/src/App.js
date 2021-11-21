@@ -16,7 +16,7 @@ function App() {
 	const [state, setState] = useState({})
 
 	useEffect(() => {
-		axios.get("/hello").then(response => {
+		axios.get(process.env.REACT_APP_BASEURL+"/hello").then(response => {
 			if (response.status == 200){
 				console.log(response.data);
 				return response.data

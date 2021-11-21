@@ -7,6 +7,7 @@ import './Login.css';
 import axios from "axios";
 
 class Login extends React.Component{
+    ///Need to change request to GET instead of POST
     constructor (props){
         super(props);
         this.state = {
@@ -28,7 +29,7 @@ class Login extends React.Component{
     }
     onClick(event) {
         event.preventDefault();
-        axios.post("https://orion-crepe.herokuapp.com/user", {
+        axios.post(process.env.REACT_APP_BASEURL+"/user", {
             email: this.state.email,
             password: this.state.password,
         }).then((response) => {
