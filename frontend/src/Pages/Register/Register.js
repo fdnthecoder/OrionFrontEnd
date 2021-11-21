@@ -32,7 +32,8 @@ class Register extends React.Component{
     }
     onClick(event) {
         event.preventDefault();
-        axios.post("https://orion-crepe.herokuapp.com/user", {
+        console.log(process.env.REACT_APP_BASEURL)
+        axios.post("{process.env.REACT_APP_BASEURL}/user", {
             email: this.state.email,
             username: this.state.username,
             password: this.state.password
