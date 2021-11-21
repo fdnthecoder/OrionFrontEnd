@@ -13,6 +13,7 @@ class Register extends React.Component{
             username: "", 
             password: ""
         };
+        this.changeEmail = this.changeEmail.bind(this);
         this.changeUsername = this.changeUsername.bind(this);
         this.changePassword = this.changePassword.bind(this);
         this.onClick = this.onClick.bind(this);
@@ -34,7 +35,7 @@ class Register extends React.Component{
         axios.post("https://orion-crepe.herokuapp.com/user", {
             email: this.state.email,
             username: this.state.username,
-            password: this.state.password,
+            password: this.state.password
         }).then((response) => {
             console.log(response);
         })
@@ -52,15 +53,15 @@ class Register extends React.Component{
                         <Form onSubmit = {this.onClick}>
                             <Form.Group>
                                 <Form.Label>Email</Form.Label>
-                                <Form.Control type="Email" placeholder="Email" />
+                                <Form.Control type="Email" onChange={this.changeEmail} placeholder="Email" />
                             </Form.Group>
                             <Form.Group>
                                 <Form.Label>Username</Form.Label>
-                                <Form.Control type="username" value={this.state.username} onChange={this.changeUsername}  placeholder="Username" />
+                                <Form.Control type="username" onChange={this.changeUsername}  placeholder="Username" />
                             </Form.Group>   
                             <Form.Group>
                                 <Form.Label>Password</Form.Label>
-                                <Form.Control type="password" value={this.state} onChange={this.changePassword} placeholder="Password" />
+                                <Form.Control type="password" onChange={this.changePassword} placeholder="Password" />
                             </Form.Group>
                             <br />   
                             <Button variant="outline-dark" type="submit">
