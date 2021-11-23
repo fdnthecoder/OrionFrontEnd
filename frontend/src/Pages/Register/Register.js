@@ -9,15 +9,20 @@ class Register extends React.Component{
     constructor (props){
         super(props);
         this.state = {
+            email: "",
             username: "", 
             password: ""
         };
+        this.changeEmail = this.changeEmail.bind(this);
         this.changeUsername = this.changeUsername.bind(this);
         this.changePassword = this.changePassword.bind(this);
         this.onClick = this.onClick.bind(this);
     }
 
-    changeUsername(event, value){
+    changeEmail(event){
+        this.setState({email: event.target.value})
+    }
+    changeUsername(event){
         this.setState({ username: event.target.value});
     }
 
@@ -27,12 +32,11 @@ class Register extends React.Component{
     }
     onClick(event) {
         event.preventDefault();
-        axios.post("https://orion-crepe.herokuapp.com/user", {
+        axios.post(process.env.REACT_APP_BASEURL+"/user", {
+            email: this.state.email,
             username: this.state.username,
-            password: this.state.password,
+            password: this.state.password
         }).then((response) => {
-            // console.log(this.state.username);
-            // console.log(this.state.password);
             console.log(response);
         })
         .catch((err) => {
@@ -48,16 +52,16 @@ class Register extends React.Component{
                     <div>
                         <Form onSubmit = {this.onClick}>
                             <Form.Group>
+                                <Form.Label>Email</Form.Label>
+                                <Form.Control type="Email" onChange={this.changeEmail} placeholder="Email" />
+                            </Form.Group>
+                            <Form.Group>
                                 <Form.Label>Username</Form.Label>
-                                <Form.Control type="username"  onChange={this.changeUsername}  placeholder="Username" />
+                                <Form.Control type="username" onChange={this.changeUsername}  placeholder="Username" />
                             </Form.Group>   
                             <Form.Group>
                                 <Form.Label>Password</Form.Label>
                                 <Form.Control type="password" onChange={this.changePassword} placeholder="Password" />
-                            </Form.Group>
-                            <Form.Group>
-                                <Form.Label>Confirm your password</Form.Label>
-                                <Form.Control type="password" placeholder="Confirm Password" />
                             </Form.Group>
                             <br />   
                             <Button variant="outline-dark" type="submit">

@@ -17,13 +17,9 @@ function App() {
 	const [state, setState] = useState({})
 
 	useEffect(() => {
-		axios.get("https://orion-crepe.herokuapp.com/hello").then(response => {
+		axios.get(process.env.REACT_APP_BASEURL+"/hello").then(response => {
 			if (response.status == 200){
 				console.log(response.data);
-				console.log(response.status);
-				console.log(response.statusText);
-				console.log(response.headers);
-				console.log(response.config);
 				return response.data
 			}
 		}).then(data => setState(data))
