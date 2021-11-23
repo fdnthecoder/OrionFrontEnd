@@ -44,6 +44,11 @@ class Register extends React.Component{
         });
     }
 
+
+    //Need to figure out a way to display whether sign upn was success or failur
+    // 1. Triggering by checking response from request and displaying with html
+    // 2. Using react alerts package 
+
     render(){
         return(
             <div className="register-body">
