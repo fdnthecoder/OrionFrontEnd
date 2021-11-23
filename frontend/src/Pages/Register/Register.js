@@ -31,6 +31,7 @@ class Register extends React.Component{
 
     }
     onClick(event) {
+        console.log(process.env.REACT_APP_BASEURL+"/user");
         event.preventDefault();
         axios.post(process.env.REACT_APP_BASEURL+"/user", {
             email: this.state.email,
