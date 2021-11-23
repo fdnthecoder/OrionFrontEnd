@@ -13,8 +13,10 @@ const Header = () => {
                 </Navbar.Brand>
                 <Navbar.Toggle aria-controls="basic-navbar-nav" />
                 <Nav className="me-auto">
-                    <Nav.Link href="">Companies</Nav.Link>
-                    <Nav.Link href="/internships">Internships</Nav.Link>
+                    <NavDropdown title="Internships" id="basic-nav-dropdown">
+                        <NavDropdown.Item href="/internships">View listings</NavDropdown.Item>
+                        <NavDropdown.Item href="/internships/new">Post a new listing</NavDropdown.Item>
+                    </NavDropdown>
                 </Nav >
                 <Nav>
                     <NavDropdown title="User" id="basic-nav-dropdown">

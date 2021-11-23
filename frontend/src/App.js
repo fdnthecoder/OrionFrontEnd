@@ -5,6 +5,7 @@ import Header from './Components/Header/Header';
 import Login from './Pages/Login/Login';
 import Profile from './Pages/Profile/Profile';
 import Internships from "./Pages/Internships/Internships";
+import PostInternships from './Pages/PostInternship/PostInternship';
 import Register from "./Pages/Register/Register";
 import {Test} from "./Components/Test/Test";
 import Home from './Pages/Home/Home';
@@ -34,6 +35,7 @@ function App() {
 			<Test prop={state}/>
 			<Header />
 			<Switch>
+				<Route path='/internships/new' component={PostInternships} />
 				<Route path='/internships' component={Internships} />
 				<Route path='/login' component={Login}/>
 				<Route path='/profile' component={Profile}/>
