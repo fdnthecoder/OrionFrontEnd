@@ -5,7 +5,7 @@ import { Container, NavDropdown, Navbar, Nav } from 'react-bootstrap'
 
 const Header = () => {
     return(
-        <Navbar fixed="top" bg="dark" variant="dark">
+        <Navbar sticky="top" bg="dark" variant="dark">
             <Container>
                 <Navbar.Brand href="/">
                     <img src={logoURL} alt="logo" width="30" height="30" className="d-inline-block align-top" />{' '}
@@ -13,7 +13,7 @@ const Header = () => {
                 </Navbar.Brand>
                 <Navbar.Toggle aria-controls="basic-navbar-nav" />
                 <Nav className="me-auto">
-                    <NavDropdown title="Internships" id="basic-nav-dropdown">
+                    <NavDropdown title="Internships">
                         <NavDropdown.Item href="/internships">View listings</NavDropdown.Item>
                         <NavDropdown.Item href="/internships/new">Post a new listing</NavDropdown.Item>
                     </NavDropdown>
@@ -32,4 +32,4 @@ const Header = () => {
     );
 }
 
-export default Header
+export default Header;
