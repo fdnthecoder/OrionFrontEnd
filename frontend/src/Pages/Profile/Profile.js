@@ -1,46 +1,45 @@
-import React from "react"
-import { Button, Card, Container, Row, Col} from "react-bootstrap"
+import React from 'react'
+import './Profile.css'
+import Image from 'react-bootstrap/Image'
+import Container from 'react-bootstrap/Container'
+import logoURL from '../../Assets/defaultProfilePic.png'
+import axios from 'axios'
 
-class Board extends React.Component{
-    constructor(props){
+class Profile extends React.Component{
+    constructor(props) {
         super(props);
         this.state = {
-            listings: [
-                {
-                    id: 0,
-                    jobName : "Software Engineer @ AWS",
-                    jobDesc : "Some stuff that software engineers at Amazon Web Services would do I guess"
-                },
-                {
-                    id: 1,
-                    jobName : "Data Engineer @ AWS",
-                    jobDesc : "Seriously, like what even do these people do lmao"
-                }
-            ]
+            name:"",
+            username:"diallodb",
+            email:"",
         };
+        this.getProfile = this.getProfile.bind(this);
+        
     }
+
+    getProfile(event){
+        axios.get( "http://127.0.0.1:8000/profile", {
+            username: this.state.username,
+        }).then((response) => {
+            this.setState({name:response.data.name, email:response.data.email});
+            console.log(response)
+        }).catch((err) => {
+            console.log(err);
+        })
+    };
 
     render(){
         return(
             <Container fluid>
-                <Row xs={1} md={2} className="g-4">
-                {this.state.listings.map(listings => (
-                    <Col key={"col" + listings.jobName}>
-                        <Card key={"entry" + listings.jobName} >
-                            <Card.Body key={"body" + listings.jobName}>
-                            <Card.Title key={"title" + listings.jobName}>{listings.jobName}</Card.Title>
-                            <Card.Text key={"text" + listings.jobName} >
-                               {listings.jobDesc}
-                            </Card.Text>
-                            <Button variant="outline-success"> View </Button>
-                            </Card.Body>
-                        </Card>
-                    </Col>
-                ))}
-                </Row>
+                {this.getProfile}
+                <br />
+                <Image src={logoURL} roundedCircle/>
+                <h1>{this.state.name}</h1>
+                <h2>{this.state.username}</h2>
+                <h2>{this.state.email}</h2>
             </Container>
-        )
+        );
     }
 }
 
-export default Board;
+export default Profile;

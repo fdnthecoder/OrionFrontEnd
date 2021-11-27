@@ -5,9 +5,8 @@ class Post extends React.Component{
     render(){
         return(
             <Container>
-                <br />
                 <h1> {this.props.location.state.jobName} </h1>
-                <p> {this.props.location.state.jobDesc} </p>
+                <p> {this.props.location.statjobDesc} </p>
                 <Stack gap={2} className="col-md-5 mx-auto">
                     <Button variant="outline-success">
                         Apply for internship
