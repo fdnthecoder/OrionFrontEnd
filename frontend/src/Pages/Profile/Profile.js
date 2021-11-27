@@ -5,12 +5,22 @@ import Container from 'react-bootstrap/Container'
 import logoURL from '../../Assets/defaultProfilePic.png'
 
 class Profile extends React.Component{
+    constructor(props){
+        super(props);
+        this.state = {
+            user: {
+                name: "Jane Doe",
+
+            }
+        }
+    }
+
     render(){
         return(
             <Container fluid>
                 <br />
-                <Image src={logoURL} roundedCircle/>
-                <h1>Placeholder Name</h1>
+                <Image align-item="center" src={logoURL} roundedCircle/>
+                <h1 align="center">{this.state.user.name}</h1>
             </Container>
         );
     }

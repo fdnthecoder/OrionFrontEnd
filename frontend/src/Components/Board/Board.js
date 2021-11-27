@@ -1,23 +1,38 @@
 import React from "react"
-import {Card, Container, Row, Col} from "react-bootstrap"
+import { Button, Card, Container, Row, Col} from "react-bootstrap"
 
 class Board extends React.Component{
+    constructor(props){
+        super(props);
+        this.state = {
+            listings: [
+                {
+                    id: 0,
+                    jobName : "Software Engineer @ AWS",
+                    jobDesc : "Some stuff that software engineers at Amazon Web Services would do I guess"
+                },
+                {
+                    id: 1,
+                    jobName : "Data Engineer @ AWS",
+                    jobDesc : "Seriously, like what even do these people do lmao"
+                }
+            ]
+        };
+    }
+
     render(){
         return(
             <Container fluid>
-                <br />
                 <Row xs={1} md={2} className="g-4">
-                {Array.from({ length: 32}).map((_, idx) => (
-                    <Col key={"col" + idx.toString()}>
-                        <Card key={"entry" + idx.toString()}>
-                            <Card.Body key={"body" + idx.toString()}>
-                            <Card.Title key={"title" + idx.toString()}>Sample Job Opening</Card.Title>
-                            <Card.Text key={"text" + idx.toString()}>
-                                Sample description for possible internship
+                {this.state.listings.map(listings => (
+                    <Col key={"col" + listings.jobName}>
+                        <Card key={"entry" + listings.jobName} >
+                            <Card.Body key={"body" + listings.jobName}>
+                            <Card.Title key={"title" + listings.jobName}>{listings.jobName}</Card.Title>
+                            <Card.Text key={"text" + listings.jobName} >
+                               {listings.jobDesc}
                             </Card.Text>
-                            <Card.Footer key={"footer" + idx.toString()}>
-                                Posted by Sample Recruiter {idx + 1}
-                            </Card.Footer>
+                            <Button variant="outline-success"> View </Button>
                             </Card.Body>
                         </Card>
                     </Col>
