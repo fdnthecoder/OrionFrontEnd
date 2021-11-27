@@ -2,20 +2,13 @@ import React from 'react';
 import { Stack, Button, Container } from 'react-bootstrap';
 
 class Post extends React.Component{
-    constructor(props){
-        super(props);
-        this.state = {
-            jobName : "Sample Job Name",
-            jobDesc : "Sample Job Desc"
-        };
-    }
-
     render(){
         return(
             <Container>
-                <h1> {this.state.jobName} </h1>
-                <p> {this.state.jobDesc} </p>
-                <Stack>
+                <br />
+                <h1> {this.props.location.state.jobName} </h1>
+                <p> {this.props.location.state.jobDesc} </p>
+                <Stack gap={2} className="col-md-5 mx-auto">
                     <Button variant="outline-success">
                         Apply for internship
                     </Button>
