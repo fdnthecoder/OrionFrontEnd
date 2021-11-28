@@ -50,8 +50,9 @@ class Profile extends React.Component{
                 <Image src={logoURL} roundedCircle/>
                 <h1>Hello {this.state.username}!</h1>
                 <h2>Email: {this.state.email}</h2>
+                <p> applications : {this.state.applications}</p>
                 <Row xs={1} md={2} className="g-4">
-                {this.application.map(listings => (
+                {this.applications.map(listings => (
                     <Col key={"col" + listings.jobName}>
                         <Card key={"entry" + listings.jobName} >
                             <Card.Body key={"body" + listings.jobName}>

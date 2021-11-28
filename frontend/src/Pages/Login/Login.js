@@ -14,22 +14,22 @@ class Login extends React.Component{
             email: "", 
             password: ""
         };
-        this.changeEmail = this.changeEmail.bind(this);
-        this.changePassword = this.changePassword.bind(this);
+        this.updateUsername = this.updateUsername.bind(this);
+        this.updatePassword = this.updatePassword.bind(this);
         this.onClick = this.onClick.bind(this);
     }
 
-    changeEmail(event){
+    updateEmail(event){
         this.setState({ email: event.target.value});
     }
 
-    changePassword(event){
+    updatePassword(event){
         this.setState({ password: event.target.value});
 
     }
     onClick(event) {
         event.preventDefault();
-        axios.post(process.env.REACT_APP_BASEURL+"/user", {
+        axios.post(process.env.REACT_APP_BASEURL+"user", {
             email: this.state.email,
             password: this.state.password,
         }).then((response) => {
@@ -40,6 +40,12 @@ class Login extends React.Component{
         });
     }
 
+    clearValue(){
+        this.setState({
+            username: "",
+            password: "",
+        })
+    }
     render(){
         return(
             <div className="login-body">
@@ -49,14 +55,14 @@ class Login extends React.Component{
                         <Form>
                             <Form.Group>
                                 <Form.Label>Username</Form.Label>
-                                <Form.Control type="email" onChange={this.changeEmail} placeholder="Username" />
+                                <Form.Control type="email" onChange={this.updateEmail} placeholder="Username" />
                             </Form.Group>   
                             <Form.Group>
                                 <Form.Label>Password</Form.Label>
-                                <Form.Control type="password" onChange={this.changePassword} placeholder="Password" />
+                                <Form.Control type="password" onChange={this.updatePassword} placeholder="Password" />
                             </Form.Group>
                             <br />   
-                            <Button text-align="center" variant="outline-dark" type="submit">
+                            <Button text-align="center" onClick = {this.clearValue} variant="outline-dark" type="submit">
                                 Login
                             </Button>{' '}
                         </Form>
