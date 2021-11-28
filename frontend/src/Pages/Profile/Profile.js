@@ -1,8 +1,8 @@
 import React from 'react'
 import './Profile.css'
 import Image from 'react-bootstrap/Image'
-import Container from 'react-bootstrap/Container'
 import logoURL from '../../Assets/defaultProfilePic.png'
+import { Card, Container, Row, Col} from "react-bootstrap"
 import axios from 'axios';
 
 class Profile extends React.Component{
@@ -12,6 +12,7 @@ class Profile extends React.Component{
         this.state = {
             username: "qadriid",
             email: "",
+            applications:[],
             data:[],
             isMount: false, 
         }
@@ -28,8 +29,12 @@ class Profile extends React.Component{
             console.log(response.data);
             if (this.isMount){
                 this.setState({
+                    email: response.data.email,
+                    applications: response.data.applications,
                     data: response.data,
                 })
+                console.log(response.data.email);
+                console.log(response.data.applications)
                 console.log(response.data);
             }
 		}).catch((err) => {
@@ -43,7 +48,22 @@ class Profile extends React.Component{
             <Container fluid>
                 <br />
                 <Image src={logoURL} roundedCircle/>
-                <p>{this.state.data}</p>
+                <h1>Hello {this.state.username}!</h1>
+                <h2>Email: {this.state.email}</h2>
+                <Row xs={1} md={2} className="g-4">
+                {this.application.map(listings => (
+                    <Col key={"col" + listings.jobName}>
+                        <Card key={"entry" + listings.jobName} >
+                            <Card.Body key={"body" + listings.jobName}>
+                            <Card.Title key={"title" + listings.jobName}>{listings.jobName}</Card.Title>
+                            <Card.Text key={"text" + listings.jobName} >
+                                {listings.jobDesc}
+                            </Card.Text>
+                            </Card.Body>
+                        </Card>
+                    </Col>
+                ))}
+            </Row>
             </Container>
         );
     }
