@@ -11,7 +11,7 @@ class Profile extends React.Component{
         this.state = {
             username: "qadriid",
             email: "",
-            data:"",
+            data:[],
         }
     }
 
