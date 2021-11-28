@@ -9,7 +9,7 @@ class Profile extends React.Component{
     constructor(props){
         super(props);
         this.state = {
-            username: "qadriid",
+            username: localStorage.getItem("username"),
             email: "",
             applications:[],
             data:[],
@@ -20,7 +20,7 @@ class Profile extends React.Component{
 
 	componentDidMount(){
         this.isMount = true;
-		axios.get(process.env.REACT_APP_BASEURL + "profile",
+		axios.get('https://orion-crepe.herokuapp.com/' + "profile",
         {
             params:{
                 username: this.state.username,
@@ -42,10 +42,10 @@ class Profile extends React.Component{
     render(){
         return(
             <Container fluid>
-                <br />
                 <Image src={logoURL} roundedCircle/>
                 <h1>Hello {this.state.username}!</h1>
                 <h2>Email: {this.state.email}</h2>
+                <br />
                 <Row xs={1} md={2} className="g-4">
                 {this.state.applications.map(listings => (
                     <Col key={"col" + listings.postID}>

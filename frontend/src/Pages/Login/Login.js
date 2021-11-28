@@ -29,12 +29,15 @@ class Login extends React.Component{
     }
     onClick(event) {
         event.preventDefault();
-        axios.get(process.env.REACT_APP_BASEURL+"user", 
-            {auth: {
+        axios.post(process.env.REACT_APP_BASEURL+"user", 
+            {
             username: this.state.username,
             password: this.state.password,
             }
-        }).then((response) => {
+        ).then((response) => {
+            if (response.status){
+                localStorage.setItem('username', this.state.username)
+            }
             console.log(response);
         })
         .catch((err) => {
@@ -42,19 +45,19 @@ class Login extends React.Component{
         });
     }
 
-    // clearValue(){
-    //     this.setState({
-    //         username: "",
-    //         password: "",
-    //     })
-    // }
+    clearValue(){
+        this.setState({
+            username: "",
+            password: "",
+        })
+    }
     render(){
         return(
             <div className="login-body">
                 <div className="login-div">
                     <Image src={logoURL} width="200" height="200"/>
                     <div>
-                        <Form>
+                        <Form onSubmit = {this.onClick}>
                             <Form.Group>
                                 <Form.Label>Username</Form.Label>
                                 <Form.Control type="username" onChange={this.updateUsername} placeholder="Username" />
@@ -64,7 +67,7 @@ class Login extends React.Component{
                                 <Form.Control type="password" onChange={this.updatePassword} placeholder="Password" />
                             </Form.Group>
                             <br />   
-                            <Button text-align="center" variant="outline-dark" type="submit">
+                            <Button text-align="center" onClick={this.clearValue} variant="outline-dark" type="submit">
                                 Login
                             </Button>{' '}
                         </Form>
