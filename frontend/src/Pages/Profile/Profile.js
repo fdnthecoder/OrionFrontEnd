@@ -2,7 +2,7 @@ import React from 'react'
 import './Profile.css'
 import Image from 'react-bootstrap/Image'
 import logoURL from '../../Assets/defaultProfilePic.png'
-import { Card, Container, Row, Col} from "react-bootstrap"
+import { Container} from "react-bootstrap"
 import axios from 'axios';
 
 class Profile extends React.Component{
@@ -33,9 +33,12 @@ class Profile extends React.Component{
                     applications: response.data.applications,
                     data: response.data,
                 })
-                console.log(response.data.email);
-                console.log(response.data.applications)
                 console.log(response.data);
+                console.log(response.data[0]);
+                console.log(response.data[1]);
+                console.log(response.data[2]);
+                console.log(response.data[3]);
+                console.log(response.data[4]);
             }
 		}).catch((err) => {
             console.log(err);

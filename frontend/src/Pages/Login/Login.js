@@ -11,27 +11,29 @@ class Login extends React.Component{
     constructor (props){
         super(props);
         this.state = {
-            email: "", 
+            username: "", 
             password: ""
         };
-        this.changeUsername = this.changeUsername.bind(this);
-        this.changePassword = this.changePassword.bind(this);
+        this.updateUsername = this.updateUsername.bind(this);
+        this.updatePassword = this.updatePassword.bind(this);
         this.onClick = this.onClick.bind(this);
     }
 
-    changeUsername(event){
-        this.setState({ email: event.target.value});
+    updateUsername(event){
+        this.setState({ username: event.target.value});
     }
 
-    changePassword(event){
+    updatePassword(event){
         this.setState({ password: event.target.value});
 
     }
     onClick(event) {
         event.preventDefault();
-        axios.post(process.env.REACT_APP_BASEURL+"user", {
-            email: this.state.email,
+        axios.get(process.env.REACT_APP_BASEURL+"user", 
+            {params: {
+            username: this.state.username,
             password: this.state.password,
+            }
         }).then((response) => {
             console.log(response);
         })
@@ -55,11 +57,11 @@ class Login extends React.Component{
                         <Form>
                             <Form.Group>
                                 <Form.Label>Username</Form.Label>
-                                <Form.Control type="email" onChange={this.changeUsername} placeholder="Username" />
+                                <Form.Control type="username" onChange={this.updateUsername} placeholder="Username" />
                             </Form.Group>   
                             <Form.Group>
                                 <Form.Label>Password</Form.Label>
-                                <Form.Control type="password" onChange={this.changePassword} placeholder="Password" />
+                                <Form.Control type="password" onChange={this.updatePassword} placeholder="Password" />
                             </Form.Group>
                             <br />   
                             <Button text-align="center" onClick = {this.clearValue} variant="outline-dark" type="submit">

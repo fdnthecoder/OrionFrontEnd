@@ -18,7 +18,7 @@ function App() {
 
 	useEffect(() => {
 		axios.get(process.env.REACT_APP_BASEURL+"/hello").then(response => {
-			if (response.status == 200){
+			if (response.status){
 				console.log(response.data);
 				return response.data
 			}
