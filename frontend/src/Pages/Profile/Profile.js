@@ -51,7 +51,7 @@ class Profile extends React.Component{
                 <h1>Hello {this.state.username}!</h1>
                 <h2>Email: {this.state.email}</h2>
                 <p> applications : {this.state.applications}</p>
-                <Row xs={1} md={2} className="g-4">
+                {/* <Row xs={1} md={2} className="g-4">
                 {this.applications.map(listings => (
                     <Col key={"col" + listings.jobName}>
                         <Card key={"entry" + listings.jobName} >
@@ -64,7 +64,7 @@ class Profile extends React.Component{
                         </Card>
                     </Col>
                 ))}
-            </Row>
+                </Row> */}
             </Container>
         );
     }
