@@ -64,7 +64,7 @@ class Login extends React.Component{
                                 <Form.Control type="password" onChange={this.updatePassword} placeholder="Password" />
                             </Form.Group>
                             <br />   
-                            <Button text-align="center" onClick = {this.clearValue} variant="outline-dark" type="submit">
+                            <Button text-align="center" variant="outline-dark" type="submit">
                                 Login
                             </Button>{' '}
                         </Form>
