@@ -6,26 +6,32 @@ import logoURL from '../../Assets/defaultProfilePic.png'
 import axios from 'axios';
 
 class Profile extends React.Component{
+
     constructor(props){
         super(props);
         this.state = {
             username: "qadriid",
             email: "",
             data:[],
+            isMount: false, 
         }
     }
 
 	componentDidMount(){
+        this.setState({isMount:true})
 		axios.get( "https://orion-crepe.herokuapp.com/profile",
         {
             params:{
                 username: this.state.username,
             }
         }).then(response => {
-			this.setState({
-                data: response.data,
-            })
             console.log(response.data);
+            if (this.isMount){
+                this.setState({
+                    data: response.data,
+                })
+                console.log(response.data);
+            }
 		}).catch((err) => {
             console.log(err);
         })
@@ -37,7 +43,7 @@ class Profile extends React.Component{
             <Container fluid>
                 <br />
                 <Image src={logoURL} roundedCircle/>
-                <body>{this.state.data}</body>
+                <p>{this.state.data}</p>
             </Container>
         );
     }
