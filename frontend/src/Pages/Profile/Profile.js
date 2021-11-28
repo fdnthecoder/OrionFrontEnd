@@ -13,7 +13,7 @@ class Profile extends React.Component{
             username: "qadriid",
             email: "",
             applications:[],
-            data:[],
+            data:{},
             isMount: false, 
         }
     }
@@ -49,8 +49,6 @@ class Profile extends React.Component{
                 <h1>Hello {this.state.username}!</h1>
                 <h2>Email: {this.state.email}</h2>
                 <p> applications : {this.state.applications}</p>
-                <h1>Tester: {this.data.email}</h1>
-                <h1>Tester applications: {this.data.applications}</h1>
                 {/* <Row xs={1} md={2} className="g-4">
                 {this.applications.map(listings => (
                     <Col key={"col" + listings.jobName}>

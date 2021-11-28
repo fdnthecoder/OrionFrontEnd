@@ -30,7 +30,7 @@ class Login extends React.Component{
     onClick(event) {
         event.preventDefault();
         axios.get(process.env.REACT_APP_BASEURL+"user", 
-            {params: {
+            {auth: {
             username: this.state.username,
             password: this.state.password,
             }
@@ -42,12 +42,12 @@ class Login extends React.Component{
         });
     }
 
-    clearValue(){
-        this.setState({
-            username: "",
-            password: "",
-        })
-    }
+    // clearValue(){
+    //     this.setState({
+    //         username: "",
+    //         password: "",
+    //     })
+    // }
     render(){
         return(
             <div className="login-body">
