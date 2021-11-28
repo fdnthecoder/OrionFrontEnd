@@ -25,6 +25,7 @@ class Profile extends React.Component{
 			this.setState({
                 data: response.data,
             })
+            console.log(response.data);
 		}).catch((err) => {
             console.log(err);
         })
