@@ -1,9 +1,9 @@
 import React from 'react'
 import './Profile.css'
 import Image from 'react-bootstrap/Image'
-import Manager from '../Manager/Manager'
+// import Manager from '../Manager/Manager'
 import logoURL from '../../Assets/defaultProfilePic.png'
-import {  Card, Container, Row, Col} from "react-bootstrap"
+import {  Button, Badge, Card, Container, Dropdown, Row, Col} from "react-bootstrap"
 import axios from 'axios';
 import config from '../../config'
 
@@ -44,30 +44,48 @@ class Profile extends React.Component{
 
     render(){
         return(
-            <Container fluid>
-                <Image src={logoURL} roundedCircle/>
-                <h1>Hello {this.state.username}!</h1>
-                <h2>Email: {this.state.email}</h2>
+            <Container>
+                <Container>
+                    <Image style={{padding: "20px", margin: "auto"}}src={logoURL} roundedCircle/>
+                    <h1>Hello {this.state.username}!</h1>
+                    <h2>{this.state.email}</h2>
+                </Container>
                 <br />
                 <h2>All jobs you've interacted with</h2><br />
                 <Row xs={1} md={2} className="g-4">
                 {this.state.applications.map(listings => (
-                    <Col key={"col" + listings.postID}>
-                        <Card key={"entry" + listings.postID} >
-                            <Card.Title key={"title" + listings.title}>{listings.title}</Card.Title>
-                            <Card.Title key={"company" + listings.company}>{listings.company}</Card.Title>
-                            <Card.Body key={"body" + listings.status}>
+                    <Col key={"col" + listings.postId}>
+                        <Card style={{maxWidth: '35rem'}} key={"entry" + listings.postId} >
+                            <Card.Header key={"badge" + listings.postId}>
+                                <Badge bg="success">{listings.company}</Badge> 
+                            </Card.Header>
+                            <Card.Title key={"company" + listings.postId}>
+                            </Card.Title>
+                            <Card.Body key={"body" + listings.postId}>
+                                <Card.Title key={"title" + listings.postId}>{listings.title}</Card.Title>
                                 <Card.Link href= {listings.url} key={"url" + listings.url} >
                                     Check out the official listing here
                                 </Card.Link>
                             </Card.Body>
-                            <Card.Footer key={"footer"+ listings.status}>Status: {listings.status}</Card.Footer>
+                            <Card.Footer key={"footer"+ listings.postId}> 
+                                    <Dropdown className="me-auto">
+                                        <Dropdown.Toggle variant="success" id="dropdown-basic">
+                                            Status: {listings.status}
+                                        </Dropdown.Toggle>
+                                        <Dropdown.Menu>
+                                            <Dropdown.Item>Change status to interested</Dropdown.Item>
+                                            <Dropdown.Item>Change status to applied</Dropdown.Item>
+                                            <Dropdown.Item>Change status to interviewing</Dropdown.Item>
+                                            <Dropdown.Item>Change status to done</Dropdown.Item>
+                                        </Dropdown.Menu> <Button variant="outline-danger">Remove application</Button> 
+                                    </Dropdown>
+                            </Card.Footer>
                         </Card>
                     </Col>
                 ))}
                 </Row><br />
-                <h2>Manage your job applications below!</h2><br />
-                <Manager applications={this.state.applications} />
+                {/*<h2>Manage your job applications below!</h2><br />*/}
+                {/*<Manager applications={this.state.applications} />*/}
             </Container>
         );
     }

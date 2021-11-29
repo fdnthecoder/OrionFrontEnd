@@ -1,6 +1,7 @@
-import axios from 'axios';
+
 import React from 'react';
 import { Stack, Button, Container } from 'react-bootstrap';
+import axios from 'axios';
 import config from '../../config';
 
 const APPLICATION_URL = config.APPLICATION_URL;

@@ -50,6 +50,7 @@ class PostInternships extends React.Component{
     render() {
         return (
             <Container>
+                <br />
                 <h1>Post a new job</h1>
                 <Form onSubmit={this.onClick}>
                     <Form.Group>
