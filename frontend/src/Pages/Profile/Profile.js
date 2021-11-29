@@ -1,6 +1,7 @@
 import React from 'react'
 import './Profile.css'
 import Image from 'react-bootstrap/Image'
+import Manager from '../Manager/Manager'
 import logoURL from '../../Assets/defaultProfilePic.png'
 import {  Card, Container, Row, Col} from "react-bootstrap"
 import axios from 'axios';
@@ -63,6 +64,7 @@ class Profile extends React.Component{
                     </Col>
                 ))}
                 </Row>
+                <Manager applications={this.state.applications} />
             </Container>
         );
     }
