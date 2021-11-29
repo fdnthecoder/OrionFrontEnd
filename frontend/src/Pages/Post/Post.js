@@ -12,9 +12,13 @@ class Post extends React.Component{
     }
 
     onClick(event){
-        event.PreventDefault();
+        event.preventDefault();
         axios.post(`${APPLICATION_URL}`,{
-            
+            postId: this.props.location.state.postId,
+            status: "saved",
+            company: this.props.location.state.company,
+            title: this.props.location.state.title,
+            url: this.props.location.state.url,
 
         }).then((response) => {
             console.log(response);
@@ -25,10 +29,12 @@ class Post extends React.Component{
     render(){
         return(
             <Container>
-                <h1> {this.props.location.state.jobName} </h1>
-                <p> {this.props.location.state.jobDesc} </p>
+                <h1> {this.props.location.state.title} </h1>
+                <h2> {this.props.location.state.company} </h2>
+                <h2> {this.props.location.state.level} </h2>
+                <p> {this.props.location.state.description} </p>
                 <Stack gap={2} className="col-md-5 mx-auto">
-                    <Button variant="outline-success">
+                    <Button onClick = {this.onClick} variant="outline-success">
                         Apply for internship
                     </Button>
                     <Button variant="outline-danger">

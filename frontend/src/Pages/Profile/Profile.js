@@ -4,6 +4,9 @@ import Image from 'react-bootstrap/Image'
 import logoURL from '../../Assets/defaultProfilePic.png'
 import {  Card, Container, Row, Col} from "react-bootstrap"
 import axios from 'axios';
+import config from '../../config'
+
+const PROFILE_URL = config.PROFILE_URL;
 
 class Profile extends React.Component{
     constructor(props){
@@ -20,7 +23,7 @@ class Profile extends React.Component{
 
 	componentDidMount(){
         this.isMount = true;
-		axios.get('https://orion-crepe.herokuapp.com/' + "profile",
+		axios.get(`${PROFILE_URL}`,
         {
             params:{
                 username: this.state.username,

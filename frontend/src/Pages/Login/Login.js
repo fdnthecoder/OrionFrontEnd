@@ -19,7 +19,6 @@ class Login extends React.Component{
         this.updateUsername = this.updateUsername.bind(this);
         this.updatePassword = this.updatePassword.bind(this);
         this.onClick = this.onClick.bind(this);
-        this.clearValue = this.clearValue.bind(this);
 
     }
 
@@ -41,6 +40,9 @@ class Login extends React.Component{
         ).then((response) => {
             if (response.data.Status === "exist"){
                 localStorage.setItem('username', this.state.username)
+                this.props.history.push("/home");
+                window.location.reload(false);
+                alert("You have successfully logged in!")
             }
         })
         .catch((err) => {
@@ -48,10 +50,7 @@ class Login extends React.Component{
         });
     }
 
-    clearValue(){
-        this.setState({username: ""})
-        this.setState({password: ""})
-    }
+
     render(){
         return(
             <div className="login-body">
@@ -68,7 +67,7 @@ class Login extends React.Component{
                                 <Form.Control type="password" onChange={this.updatePassword} placeholder="Password" />
                             </Form.Group>
                             <br />   
-                            <Button text-align="center" onClick={this.clearValue} variant="outline-dark" type="submit">
+                            <Button text-align="center" variant="outline-dark" type="submit">
                                 Login
                             </Button>{' '}
                         </Form>

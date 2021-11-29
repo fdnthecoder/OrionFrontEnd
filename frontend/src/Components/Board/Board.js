@@ -1,4 +1,4 @@
-import React, { useState } from "react"
+import React from "react"
 import { useHistory } from "react-router";
 import { Button, Card, Container, Row, Col} from "react-bootstrap"
 
@@ -9,14 +9,17 @@ const Board = (props) => {
         <Container fluid>
             <Row xs={1} md={2} className="g-4">
             {props.data.map(listings => (
-                <Col key={"col" + listings.jobName}>
-                    <Card key={"entry" + listings.jobName} >
-                        <Card.Body key={"body" + listings.jobName}>
-                        <Card.Title key={"title" + listings.jobName}>{listings.jobName}</Card.Title>
-                        <Card.Text key={"text" + listings.jobName} >
-                            {listings.jobDesc}
+                <Col key={"col" + listings.postId}>
+                    <Card key={"entry" + listings.postId} >
+                        <Card.Body key={"body" + listings.postId}>
+                        <Card.Title key={"company" + listings.company}>{listings.company}</Card.Title>
+                        <Card.Title key={"level" + listings.level}>{listings.level}</Card.Title>
+                        <Card.Title key={"title" + listings.title}>{listings.title}</Card.Title>
+                        <Card.Link href={listings.url} key={"link" + listings.url}>Link Here</Card.Link>
+                        <Card.Text key={"text" + listings.description} >
+                            {listings.description}
                         </Card.Text>
-                        <Button onClick={() => history.push({pathname: '/post/' + listings.id, state: listings})} variant="outline-success"> View </Button>
+                        <Button onClick={() => history.push({pathname: '/post/' + listings.postId, state: listings})} variant="outline-success"> View </Button>
                         </Card.Body>
                     </Card>
                 </Col>
