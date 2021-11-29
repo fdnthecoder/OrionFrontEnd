@@ -4,8 +4,10 @@ import logoURL from '../../Assets/logo.png'
 import { Container, NavDropdown, Navbar, Nav } from 'react-bootstrap'
 
 const Header = () => {
-    return(
-        <Navbar sticky="top" bg="dark" variant="dark">
+    const username = localStorage.getItem("username");
+    if (username){
+        return (
+            <Navbar sticky="top" bg="dark" variant="dark">
             <Container>
                 <Navbar.Brand href="/">
                     <img src={logoURL} alt="logo" width="30" height="30" className="d-inline-block align-top" />{' '}
@@ -20,11 +22,27 @@ const Header = () => {
                 </Nav >
                 <Nav>
                     <NavDropdown title="User" id="basic-nav-dropdown">
-                        <NavDropdown.Item href="/login">Login</NavDropdown.Item>
                         <NavDropdown.Item href="/profile">Profile</NavDropdown.Item>
                         <NavDropdown.Item href="">Settings</NavDropdown.Item>
                         <NavDropdown.Divider />
                         <NavDropdown.Item href="">Logout</NavDropdown.Item>
+                    </NavDropdown>
+                </Nav>
+            </Container>
+        </Navbar>
+        );
+    }
+    return(
+        <Navbar sticky="top" bg="dark" variant="dark">
+            <Container>
+                <Navbar.Brand href="/">
+                    <img src={logoURL} alt="logo" width="30" height="30" className="d-inline-block align-top" />{' '}
+                    Orion
+                </Navbar.Brand>
+                <Navbar.Toggle aria-controls="basic-navbar-nav" />
+                <Nav>
+                    <NavDropdown title="User" id="basic-nav-dropdown">
+                        <NavDropdown.Item href="/login">Login</NavDropdown.Item>
                     </NavDropdown>
                 </Nav>
             </Container>

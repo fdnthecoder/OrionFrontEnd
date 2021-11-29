@@ -5,7 +5,9 @@ import Button from 'react-bootstrap/Button'
 import Form from 'react-bootstrap/Form'
 import './Login.css';
 import axios from "axios";
+import config from '../../config'
 
+const SIGNIN_URL = config.SIGNIN_URL;
 class Login extends React.Component{
     ///Need to change request to GET instead of POST
     constructor (props){
@@ -17,6 +19,8 @@ class Login extends React.Component{
         this.updateUsername = this.updateUsername.bind(this);
         this.updatePassword = this.updatePassword.bind(this);
         this.onClick = this.onClick.bind(this);
+        this.clearValue = this.clearValue.bind(this);
+
     }
 
     updateUsername(event){
@@ -29,16 +33,15 @@ class Login extends React.Component{
     }
     onClick(event) {
         event.preventDefault();
-        axios.post(process.env.REACT_APP_BASEURL+"user", 
+        axios.post(`${SIGNIN_URL}`, 
             {
             username: this.state.username,
             password: this.state.password,
             }
         ).then((response) => {
-            if (response.status){
+            if (response.data.Status === "exist"){
                 localStorage.setItem('username', this.state.username)
             }
-            console.log(response);
         })
         .catch((err) => {
             console.log(err);
@@ -46,10 +49,8 @@ class Login extends React.Component{
     }
 
     clearValue(){
-        this.setState({
-            username: "",
-            password: "",
-        })
+        this.setState({username: ""})
+        this.setState({password: ""})
     }
     render(){
         return(

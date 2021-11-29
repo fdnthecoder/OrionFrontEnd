@@ -4,7 +4,9 @@ import Form from 'react-bootstrap/Form';
 //import { useEffect, useState } from 'react';
 import "./Register.css";
 import axios from "axios";
+import config from "../../config";
 
+const SIGNUP_URL = config.SIGNUP_URL
 class Register extends React.Component{
     constructor (props){
         super(props);
@@ -20,7 +22,7 @@ class Register extends React.Component{
     }
 
     changeEmail(event){
-        this.setState({email: event.target.value})
+        this.setState({email: event.target.value});
     }
     changeUsername(event){
         this.setState({ username: event.target.value});
@@ -31,9 +33,8 @@ class Register extends React.Component{
 
     }
     onClick(event) {
-        console.log(process.env.REACT_APP_BASEURL+"/user");
         event.preventDefault();
-        axios.post(process.env.REACT_APP_BASEURL+"user", {
+        axios.post(`${SIGNUP_URL}`, {
             email: this.state.email,
             username: this.state.username,
             password: this.state.password
