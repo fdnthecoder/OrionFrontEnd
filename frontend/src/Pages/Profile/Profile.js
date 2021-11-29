@@ -44,18 +44,20 @@ class Profile extends React.Component{
 
     render(){
         return(
-            <Container>
-                <Container>
-                    <Image style={{padding: "20px", margin: "auto"}}src={logoURL} roundedCircle/>
-                    <h1>Hello {this.state.username}!</h1>
-                    <h2>{this.state.email}</h2>
+            <Container className="me-auto">
+                <Container style={{display: "flex", justifyContent: "center", padding: "20px"}}>
+                    <Image style={{paddingTop: "20px", marginRight: "5rem"}} src={logoURL} roundedCircle/>
+                    <Container style={{marginTop: "5rem"}}>
+                        <h1>{this.state.username}</h1>
+                        <h4>{this.state.email}</h4>
+                        <br />
+                    </Container>
                 </Container>
-                <br />
-                <h2>All jobs you've interacted with</h2><br />
+                <h2 className="text-center">All jobs you've interacted with</h2><br />
                 <Row xs={1} md={2} className="g-4">
                 {this.state.applications.map(listings => (
                     <Col key={"col" + listings.postId}>
-                        <Card style={{maxWidth: '35rem'}} key={"entry" + listings.postId} >
+                        <Card style={{maxWidth: '50rem'}} key={"entry" + listings.postId} >
                             <Card.Header key={"badge" + listings.postId}>
                                 <Badge bg="success">{listings.company}</Badge> 
                             </Card.Header>
@@ -77,7 +79,7 @@ class Profile extends React.Component{
                                             <Dropdown.Item>Change status to applied</Dropdown.Item>
                                             <Dropdown.Item>Change status to interviewing</Dropdown.Item>
                                             <Dropdown.Item>Change status to done</Dropdown.Item>
-                                        </Dropdown.Menu> <Button variant="outline-danger">Remove application</Button> 
+                                        </Dropdown.Menu> <Button variant="outline-danger">Remove</Button> 
                                     </Dropdown>
                             </Card.Footer>
                         </Card>
