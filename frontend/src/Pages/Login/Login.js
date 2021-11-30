@@ -38,7 +38,7 @@ class Login extends React.Component{
             password: this.state.password,
             }
         ).then((response) => {
-            if (response.data.Status === "exist"){
+            if (response.data.Status === "Does exist"){
                 localStorage.setItem('username', this.state.username)
                 this.props.history.push("/home");
                 window.location.reload(false);
