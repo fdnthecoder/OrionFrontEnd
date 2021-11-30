@@ -46,6 +46,7 @@ class Profile extends React.Component{
 
     updateStatus(event){
         axios.put( `${APPLICATION_URL}`, {
+            username: this.state.username,
             postID: event.target.id,
             status: event.target.name,
         }).then((response) => {
