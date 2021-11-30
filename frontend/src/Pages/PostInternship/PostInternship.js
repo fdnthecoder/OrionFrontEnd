@@ -93,7 +93,7 @@ class PostInternships extends React.Component{
                         <Form.Control as="textarea" onChange={this.updateDescrition}  />           
                     </Form.Group>
                     <br />
-                    <Button type="submit">
+                    <Button variant="outline-success" type="submit">
                         Post new listing
                     </Button>
                 </Form>
