@@ -24,31 +24,25 @@ class PostInternships extends React.Component{
 
     updateName(event) {
         this.setState({name: event.target.value});
-        console.log(this.state.name);
     }
 
     updateCompany(event) {
         this.setState({company: event.target.value});
-        console.log(this.state.company);
     }
 
     updateUrl(event) {
         this.setState({url: event.target.value});
-        console.log(this.state.url);
     }
 
     updateDescrition(event) {
         this.setState({description: event.target.value});
-        console.log(this.state.description);
     }
 
     updateLevel(event) {
         this.setState({level: event.target.value});
-        console.log(this.state.level);
     }
     onClick(event){
-        event.PreventDefault();
-        console.log(this.state);
+        event.preventDefault();
         axios.post(`${JOB_LISTINGS_URL}`, {
             name: this.state.name,
             company: this.state.company, 
