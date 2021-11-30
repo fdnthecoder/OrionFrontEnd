@@ -43,6 +43,9 @@ class Login extends React.Component{
                 this.props.history.push("/home");
                 window.location.reload(false);
                 alert("You have successfully logged in!")
+            } else {
+                alert("Login was not successful")
+                console.log(response);
             }
         })
         .catch((err) => {

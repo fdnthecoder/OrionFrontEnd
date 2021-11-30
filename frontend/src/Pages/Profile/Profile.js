@@ -33,7 +33,9 @@ class Profile extends React.Component{
             if (this.isMount){
                 this.setState({data: response.data});
                 this.setState({email: response.data.email});
-                this.setState({applications: response.data.applications})
+                if (response.data.applications){
+                    this.setState({applications: response.data.applications});
+                }
 
             }
 		}).catch((err) => {
