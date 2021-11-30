@@ -36,6 +36,11 @@ class Post extends React.Component{
                         <Badge bg="success"> {this.props.location.state.company} </Badge> <Badge bg="dark"> {this.props.location.state.level} </Badge>
                     </Container>
                 </Container>
+                <Container style={{padding: "20px", display: "flex", justifyContent: "center"}}>
+                    <Container>
+                        {this.props.location.state.description}
+                    </Container>
+                </Container>
                 <Stack gap={2} className="col-md-5 mx-auto">
                         <Button variant="outline-primary" href={this.props.location.state.url}> View the official listing here </Button>
                         <Button onClick = {this.onClick} variant="outline-success">
@@ -44,7 +49,7 @@ class Post extends React.Component{
                         <Button variant="outline-danger">
                             Return to listings
                         </Button>
-                    </Stack>    
+                </Stack>    
             </Container>
         );
     }

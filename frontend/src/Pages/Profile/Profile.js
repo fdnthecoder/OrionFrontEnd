@@ -88,7 +88,7 @@ class Profile extends React.Component{
                                             Status: {listings.status}
                                         </Dropdown.Toggle>
                                         <Dropdown.Menu>
-                                            <Dropdown.Item id={listings.postID} name="Interested" onClick= {this.updateStatus}>Interested</Dropdown.Item>
+                                            <Dropdown.Item id={listings.postID} name="Saved" onClick= {this.updateStatus}>Saved</Dropdown.Item>
                                             <Dropdown.Item id={listings.postID} name="Applied" onClick = {this.updateStatus}>Applied</Dropdown.Item>
                                             <Dropdown.Item id={listings.postID} name="Interview" onClick = {this.updateStatus}>Interviewing</Dropdown.Item>
                                             <Dropdown.Item id={listings.postID} name="Done" onClick = {this.updateStatus}>Done</Dropdown.Item>

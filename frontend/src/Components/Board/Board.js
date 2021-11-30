@@ -16,11 +16,11 @@ const Board = (props) => {
                         </Card.Header>
                         <Card.Body key={"body" + listings.postId}>
                             <Card.Title key={"title" + listings.title}>{listings.title}</Card.Title>
-                            <Card.Link href={listings.url} key={"link" + listings.url}>View official job listing</Card.Link>
-                            <Card.Text key={"text" + listings.description} >
+                            <Card.Text style={{maxHeight: "100px", overflow: "hidden"}} key={"text" + listings.description} >
                                 {listings.description}
                             </Card.Text>
                             <Button onClick={() => history.push({pathname: '/post/' + listings.postId, state: listings})} variant="outline-success"> View </Button>
+                            <Button href={listings.url} variant="outline-primary" style={{marginLeft: "0.25rem"}}>See on official site</Button>
                         </Card.Body>
                     </Card>
                 </Col>
