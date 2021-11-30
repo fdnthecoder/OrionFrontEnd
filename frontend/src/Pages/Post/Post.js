@@ -15,12 +15,12 @@ class Post extends React.Component{
     onClick(event){
         event.preventDefault();
         axios.post(`${APPLICATION_URL}`,{
-            postId: this.props.location.state.postId,
-            status: "saved",
+            username: localStorage.getItem("username"),
+            postID: this.props.location.state.postID,
+            status: "Saved",
             company: this.props.location.state.company,
             title: this.props.location.state.title,
             url: this.props.location.state.url,
-
         }).then((response) => {
             console.log(response);
         }).catch((err) => {
@@ -46,7 +46,7 @@ class Post extends React.Component{
                         <Button onClick = {this.onClick} variant="outline-success">
                             Apply for internship
                         </Button>
-                        <Button variant="outline-danger">
+                        <Button href = "/internships" variant="outline-danger">
                             Return to listings
                         </Button>
                 </Stack>    

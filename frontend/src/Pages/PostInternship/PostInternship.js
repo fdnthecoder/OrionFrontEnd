@@ -44,7 +44,6 @@ class PostInternships extends React.Component{
     onClick(event){
         event.preventDefault();
         axios.post(`${JOB_LISTINGS_URL}`, {
-            username: localStorage.getItem("username"),
             name: this.state.name,
             company: this.state.company, 
             level: this.state.level,
