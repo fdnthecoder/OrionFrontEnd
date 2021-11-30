@@ -26,7 +26,7 @@ const Header = () => {
                     </NavDropdown>
                 </Nav >
                 <Nav>
-                    <NavDropdown title="User" id="basic-nav-dropdown">
+                    <NavDropdown title={username} id="basic-nav-dropdown">
                         <NavDropdown.Item href="/profile">Profile</NavDropdown.Item>
                         <NavDropdown.Divider />
                         <NavDropdown.Item href= "/home" onClick = {logout}>Logout</NavDropdown.Item>
