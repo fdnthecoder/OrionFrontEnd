@@ -10,6 +10,7 @@ class PostInternships extends React.Component{
         this.state = {
             name: "", 
             company: "",
+            level: "",
             url: "",
             description: "",
         };
@@ -17,30 +18,41 @@ class PostInternships extends React.Component{
         this.updateCompany = this.updateCompany.bind(this);
         this.updateUrl = this.updateUrl.bind(this);
         this.updateDescrition = this.updateDescrition.bind(this);
+        this.updateLevel = this.updateLevel.bind(this);
         this.onClick = this.onClick.bind(this);
     }
 
     updateName(event) {
-        this.setState({name: event.target.value})
+        this.setState({name: event.target.value});
+        console.log(this.state.name);
     }
 
     updateCompany(event) {
-        this.setState({company: event.target.value})
+        this.setState({company: event.target.value});
+        console.log(this.state.company);
     }
 
     updateUrl(event) {
-        this.setState({url: event.target.value})
+        this.setState({url: event.target.value});
+        console.log(this.state.url);
     }
 
     updateDescrition(event) {
-        this.setState({description: event.target.value})
+        this.setState({description: event.target.value});
+        console.log(this.state.description);
     }
 
+    updateLevel(event) {
+        this.setState({level: event.target.value});
+        console.log(this.state.level);
+    }
     onClick(event){
         event.PreventDefault();
+        console.log(this.state);
         axios.post(`${JOB_LISTINGS_URL}`, {
             name: this.state.name,
             company: this.state.company, 
+            level: this.state.level,
             url: this.state.url, 
             description: this.state.description,
         }).then((response) => {
@@ -66,6 +78,12 @@ class PostInternships extends React.Component{
                             Company
                         </Form.Label>
                         <Form.Control type="input" onChange={this.updateCompany} />
+                    </Form.Group>
+                    <Form.Group>
+                        <Form.Label>
+                            Level
+                        </Form.Label>
+                        <Form.Control type="input" onChange={this.updateLevel} />
                     </Form.Group>
                     <Form.Group>
                         <Form.Label>

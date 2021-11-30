@@ -8,6 +8,7 @@ import axios from 'axios';
 import config from '../../config'
 
 const PROFILE_URL = config.PROFILE_URL;
+const APPLICATION_URL = config.APPLICATION_URL;
 
 class Profile extends React.Component{
     constructor(props){
@@ -35,6 +36,7 @@ class Profile extends React.Component{
                 this.setState({data: response.data});
                 this.setState({email: response.data.email});
                 this.setState({applications: response.data.applications})
+                console.log(this.state.applications);
 
             }
 		}).catch((err) => {
@@ -42,8 +44,15 @@ class Profile extends React.Component{
         })
 	};
 
-    updateStatus(){
-        console.log("testing")
+    updateStatus(event){
+        axios.put( `${APPLICATION_URL}`, {
+            postID: event.target.id,
+            status: event.target.name,
+        }).then((response) => {
+            console.log(response);
+        }).catch((err) => { 
+            console.log(err);
+        })
     }
 
     render(){
@@ -60,29 +69,29 @@ class Profile extends React.Component{
                 <h2 className="text-center">All jobs you've interacted with</h2><br />
                 <Row xs={1} md={2} className="g-4">
                 {this.state.applications?.map(listings => (
-                    <Col key={"col" + listings.postId}>
-                        <Card style={{maxWidth: '50rem'}} key={"entry" + listings.postId} >
-                            <Card.Header key={"badge" + listings.postId}>
+                    <Col key={"col" + listings.postID}>
+                        <Card style={{maxWidth: '50rem'}} key={"entry" + listings.postID} >
+                            <Card.Header key={"badge" + listings.postID}>
                                 <Badge bg="success">{listings.company}</Badge> 
                             </Card.Header>
-                            <Card.Title key={"company" + listings.postId}>
+                            <Card.Title key={"company" + listings.postID}>
                             </Card.Title>
-                            <Card.Body key={"body" + listings.postId}>
-                                <Card.Title key={"title" + listings.postId}>{listings.title}</Card.Title>
+                            <Card.Body key={"body" + listings.postID}>
+                                <Card.Title key={"title" + listings.postID}>{listings.title}</Card.Title>
                                 <Card.Link href= {listings.url} key={"url" + listings.url} >
                                     Check out the official listing here
                                 </Card.Link>
                             </Card.Body>
-                            <Card.Footer key={"footer"+ listings.postId}> 
+                            <Card.Footer key={"footer"+ listings.postID}> 
                                     <Dropdown className="me-auto">
                                         <Dropdown.Toggle variant="success" id="dropdown-basic">
                                             Status: {listings.status}
                                         </Dropdown.Toggle>
                                         <Dropdown.Menu>
-                                            <Dropdown.Item value = "Interested">Interested</Dropdown.Item>
-                                            <Dropdown.Item value = "Applied">Applied</Dropdown.Item>
-                                            <Dropdown.Item value = "Interview">Interviewing</Dropdown.Item>
-                                            <Dropdown.Item value = "Done">Done</Dropdown.Item>
+                                            <Dropdown.Item id={listings.postID} name="Interested" onClick= {this.updateStatus}>Interested</Dropdown.Item>
+                                            <Dropdown.Item id={listings.postID} name="Applied" onClick = {this.updateStatus}>Applied</Dropdown.Item>
+                                            <Dropdown.Item id={listings.postID} name="Interview" onClick = {this.updateStatus}>Interviewing</Dropdown.Item>
+                                            <Dropdown.Item id={listings.postID} name="Done" onClick = {this.updateStatus}>Done</Dropdown.Item>
                                         </Dropdown.Menu> <Button variant="outline-danger">Remove</Button> 
                                     </Dropdown>
                             </Card.Footer>
