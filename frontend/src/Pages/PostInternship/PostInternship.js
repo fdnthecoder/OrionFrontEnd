@@ -1,7 +1,9 @@
 import React from 'react'
 import { Button, Form, Container } from 'react-bootstrap'
 import axios from 'axios'
+import config from '../../config'
 
+const JOB_LISTINGS_URL = config.JOB_LISTINGS_URL;
 class PostInternships extends React.Component{
     constructor (props){
         super(props);
@@ -36,7 +38,7 @@ class PostInternships extends React.Component{
 
     onClick(event){
         event.PreventDefault();
-        axios.post(process.env.REACT_APP_BASEURL+"/post", {
+        axios.post(`${JOB_LISTINGS_URL}`, {
             name: this.state.name,
             company: this.state.company, 
             url: this.state.url, 

@@ -19,6 +19,7 @@ class Profile extends React.Component{
             data:[],
             isMount: "false",
         }
+        this.updateStatus = this.updateStatus.bind(this);
     }
 
 	componentDidMount(){
@@ -33,9 +34,7 @@ class Profile extends React.Component{
             if (this.isMount){
                 this.setState({data: response.data});
                 this.setState({email: response.data.email});
-                if (response.data.applications){
-                    this.setState({applications: response.data.applications});
-                }
+                this.setState({applications: response.data.applications})
 
             }
 		}).catch((err) => {
@@ -43,6 +42,9 @@ class Profile extends React.Component{
         })
 	};
 
+    updateStatus(){
+        console.log("testing")
+    }
 
     render(){
         return(
@@ -57,7 +59,7 @@ class Profile extends React.Component{
                 </Container>
                 <h2 className="text-center">All jobs you've interacted with</h2><br />
                 <Row xs={1} md={2} className="g-4">
-                {this.state.applications.map(listings => (
+                {this.state.applications?.map(listings => (
                     <Col key={"col" + listings.postId}>
                         <Card style={{maxWidth: '50rem'}} key={"entry" + listings.postId} >
                             <Card.Header key={"badge" + listings.postId}>
@@ -77,10 +79,10 @@ class Profile extends React.Component{
                                             Status: {listings.status}
                                         </Dropdown.Toggle>
                                         <Dropdown.Menu>
-                                            <Dropdown.Item>Change status to interested</Dropdown.Item>
-                                            <Dropdown.Item>Change status to applied</Dropdown.Item>
-                                            <Dropdown.Item>Change status to interviewing</Dropdown.Item>
-                                            <Dropdown.Item>Change status to done</Dropdown.Item>
+                                            <Dropdown.Item value = "Interested">Interested</Dropdown.Item>
+                                            <Dropdown.Item value = "Applied">Applied</Dropdown.Item>
+                                            <Dropdown.Item value = "Interview">Interviewing</Dropdown.Item>
+                                            <Dropdown.Item value = "Done">Done</Dropdown.Item>
                                         </Dropdown.Menu> <Button variant="outline-danger">Remove</Button> 
                                     </Dropdown>
                             </Card.Footer>
