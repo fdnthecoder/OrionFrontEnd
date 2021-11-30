@@ -23,6 +23,13 @@ class Post extends React.Component{
             url: this.props.location.state.url,
         }).then((response) => {
             console.log(response);
+            if (response.data.Status === "Success"){
+                alert("Application successfully added");
+                this.props.history.push("/profile");
+                window.location.reload(false);
+            } else {
+                alert("Application was not added");
+            }
         }).catch((err) => {
             console.log(err)
         });
