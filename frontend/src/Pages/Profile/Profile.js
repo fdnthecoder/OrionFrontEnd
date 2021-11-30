@@ -51,6 +51,12 @@ class Profile extends React.Component{
             status: event.target.name,
         }).then((response) => {
             console.log(response);
+            if (response.data.Status === "Success"){
+                alert("Status was updated")
+                window.location.reload(false);
+            } else {
+                alert("Status was not changed successfully")
+            }
         }).catch((err) => { 
             console.log(err);
         })
