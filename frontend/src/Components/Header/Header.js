@@ -6,7 +6,6 @@ import { Container, NavDropdown, Navbar, Nav } from 'react-bootstrap'
 function logout(){
     localStorage.clear();
     window.location.reload(false);
-    alert("You have have logged out!")
 }
 const Header = () => {
     const username = localStorage.getItem("username");
@@ -29,7 +28,7 @@ const Header = () => {
                     <NavDropdown title={username} id="basic-nav-dropdown">
                         <NavDropdown.Item href="/profile">Profile</NavDropdown.Item>
                         <NavDropdown.Divider />
-                        <NavDropdown.Item href= "/home" onClick = {logout}>Logout</NavDropdown.Item>
+                        <NavDropdown.Item href="/home" onClick = {logout}>Logout</NavDropdown.Item>
                     </NavDropdown>
                 </Nav>
             </Container>

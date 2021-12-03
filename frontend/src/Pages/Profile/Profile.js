@@ -6,6 +6,7 @@ import logoURL from '../../Assets/defaultProfilePic.png'
 import {  Button, Badge, Card, Container, Dropdown, Row, Col} from "react-bootstrap"
 import axios from 'axios';
 import config from '../../config'
+import Popup from '../../Components/Popup/Popup'
 
 const PROFILE_URL = config.PROFILE_URL;
 const APPLICATION_URL = config.APPLICATION_URL;
@@ -19,6 +20,7 @@ class Profile extends React.Component{
             applications:[],
             data:[],
             isMount: "false",
+            message: "",
         }
         this.updateStatus = this.updateStatus.bind(this);
     }
@@ -51,12 +53,8 @@ class Profile extends React.Component{
             status: event.target.name,
         }).then((response) => {
             console.log(response);
-            if (response.data.Status === "Success"){
-                alert("Status was updated")
-                window.location.reload(false);
-            } else {
-                alert("Status was not changed successfully")
-            }
+            const message = response.data.Status + " - Status successfully changed!"
+            this.setState({message: message})
         }).catch((err) => { 
             console.log(err);
         })
@@ -64,7 +62,9 @@ class Profile extends React.Component{
 
     render(){
         return(
+            
             <Container className="me-auto">
+                {this.state.message && <Popup message = {this.state.message} history={this.props.history} pageChange="/profile" page = "Profile" />}
                 <Container style={{display: "flex", justifyContent: "center", padding: "20px"}}>
                     <Image style={{paddingTop: "20px", marginRight: "5rem"}} src={logoURL} roundedCircle/>
                     <Container style={{marginTop: "5rem"}}>

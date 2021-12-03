@@ -2,6 +2,7 @@ import React from 'react'
 import { Button, Form, Container } from 'react-bootstrap'
 import axios from 'axios'
 import config from '../../config'
+import Popup from '../../Components/Popup/Popup'
 
 const JOB_LISTINGS_URL = config.JOB_LISTINGS_URL;
 class PostInternships extends React.Component{
@@ -13,6 +14,7 @@ class PostInternships extends React.Component{
             level: "",
             url: "",
             description: "",
+            message: "",
         };
         this.updateName = this.updateName.bind(this);
         this.updateCompany = this.updateCompany.bind(this);
@@ -51,20 +53,16 @@ class PostInternships extends React.Component{
             description: this.state.description,
         }).then((response) => {
             console.log(response.data);
-            this.setState({
-                name: "",
-                company: "",
-                level: "",
-                url: "",
-                description: "",
-            });
+            this.setState({message: response.data.Status})
         }).catch((err) => {
             console.log(err);
         })
+        event.target.reset();
     }
     render() {
         return (
             <Container>
+                {this.state.message && <Popup message = {this.state.message} history={this.props.history} pageChange="/internships" page = "Post New Job" />}
                 <br />
                 <h1>Post a new job</h1>
                 <Form onSubmit={this.onClick}>

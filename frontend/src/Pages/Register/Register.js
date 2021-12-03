@@ -60,15 +60,15 @@ class Register extends React.Component{
                         <Form onSubmit = {this.onClick}>
                             <Form.Group>
                                 <Form.Label>Email</Form.Label>
-                                <Form.Control type="Email" onChange={this.changeEmail} placeholder="Email" />
+                                <Form.Control type="Email" onChange={this.changeEmail} placeholder="Email" required isInvalid/>
                             </Form.Group>
                             <Form.Group>
                                 <Form.Label>Username</Form.Label>
-                                <Form.Control type="username" onChange={this.changeUsername}  placeholder="Username" />
+                                <Form.Control type="username" onChange={this.changeUsername}  placeholder="Username" required isInvalid/>
                             </Form.Group>   
                             <Form.Group>
                                 <Form.Label>Password</Form.Label>
-                                <Form.Control type="password" onChange={this.changePassword} placeholder="Password" />
+                                <Form.Control type="password" onChange={this.changePassword} placeholder="Password" required isInvalid/>
                             </Form.Group>
                             <br />   
                             <Button variant="outline-dark" type="submit">

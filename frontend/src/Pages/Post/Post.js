@@ -3,13 +3,19 @@ import React from 'react';
 import { Badge, Stack, Button, Container} from 'react-bootstrap';
 import axios from 'axios';
 import config from '../../config';
+import Popup from '../../Components/Popup/Popup';
 
 const APPLICATION_URL = config.APPLICATION_URL;
+const JOB_LISTINGS_URL = config.JOB_LISTINGS_URL
 class Post extends React.Component{
 
     constructor(props){
         super(props);
+        this.state = {
+            message : "",
+        }
         this.onClick = this.onClick.bind(this);
+        this.deletePost = this.deletePost.bind(this);
     }
 
     onClick(event){
@@ -23,20 +29,26 @@ class Post extends React.Component{
             url: this.props.location.state.url,
         }).then((response) => {
             console.log(response);
-            if (response.data.Status === "Success"){
-                alert("Application successfully added");
-                this.props.history.push("/profile");
-                window.location.reload(false);
-            } else {
-                alert("Application was not added");
-            }
+            this.setState({message: response.data.Status});
         }).catch((err) => {
             console.log(err)
         });
     }
+
+    deletePost(event){
+        axios.delete(`${JOB_LISTINGS_URL}`,{
+            postID: event.target.value,
+        }).then((response) => {
+            console.log(response)
+        }).catch((err) => {
+            console.log(err)
+        })
+    }
     render(){
         return(
             <Container>
+                {this.state.message && <Popup message = {this.state.message} history={this.props.history} pageChange="/profile" page = "Adding To Application" />}
+
                 <Container style={{padding: "20px", display: "flex", justifyContent: "center"}}  className="me-auto">
                     <Container>
                         <h1> {this.props.location.state.title} </h1>
