@@ -23,6 +23,7 @@ class Profile extends React.Component{
             message: "",
         }
         this.updateStatus = this.updateStatus.bind(this);
+        this.deleteApplcation = this.deleteApplcation.bind(this);
     }
 
 	componentDidMount(){
@@ -60,6 +61,18 @@ class Profile extends React.Component{
         })
     }
 
+    deleteApplcation(event){
+        axios.delete(`${APPLICATION_URL}`, 
+            {params: {
+            username: this.state.username,
+            postID: event.target.id,
+        }}).then((response) => {
+            console.log(response)
+            this.setState({message: response.data.Status})
+        }).catch((err) => {
+            console.log(err)
+        })
+    }
     render(){
         return(
             
@@ -99,7 +112,7 @@ class Profile extends React.Component{
                                             <Dropdown.Item id={listings.postID} name="Applied" onClick = {this.updateStatus}>Applied</Dropdown.Item>
                                             <Dropdown.Item id={listings.postID} name="Interview" onClick = {this.updateStatus}>Interviewing</Dropdown.Item>
                                             <Dropdown.Item id={listings.postID} name="Done" onClick = {this.updateStatus}>Done</Dropdown.Item>
-                                        </Dropdown.Menu> <Button variant="outline-danger">Remove</Button> 
+                                        </Dropdown.Menu> <Button id = {listings.postID} onClick={this.deleteApplcation} variant="outline-danger">Remove</Button> 
                                     </Dropdown>
                             </Card.Footer>
                         </Card>

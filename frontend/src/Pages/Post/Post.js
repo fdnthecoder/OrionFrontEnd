@@ -6,7 +6,6 @@ import config from '../../config';
 import Popup from '../../Components/Popup/Popup';
 
 const APPLICATION_URL = config.APPLICATION_URL;
-const JOB_LISTINGS_URL = config.JOB_LISTINGS_URL
 class Post extends React.Component{
 
     constructor(props){
@@ -15,7 +14,6 @@ class Post extends React.Component{
             message : "",
         }
         this.onClick = this.onClick.bind(this);
-        this.deletePost = this.deletePost.bind(this);
     }
 
     onClick(event){
@@ -35,15 +33,6 @@ class Post extends React.Component{
         });
     }
 
-    deletePost(event){
-        axios.delete(`${JOB_LISTINGS_URL}`,{
-            postID: event.target.value,
-        }).then((response) => {
-            console.log(response)
-        }).catch((err) => {
-            console.log(err)
-        })
-    }
     render(){
         return(
             <Container>
