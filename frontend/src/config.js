@@ -1,6 +1,6 @@
-//let BASE_URL = 'https://orion-crepe.herokuapp.com/';
+let BASE_URL = 'https://orion-crepe.herokuapp.com/';
 
-let BASE_URL = 'http://127.0.0.1:8000/'
+//let BASE_URL = 'http://127.0.0.1:8000/'
 if (process.env.REACT_APP_BASE_URL){
     BASE_URL = process.env.REACT_APP_BASE_URL;
 }
