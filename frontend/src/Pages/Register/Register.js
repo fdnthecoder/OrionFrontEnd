@@ -51,9 +51,10 @@ class Register extends React.Component{
         event.preventDefault();
         this.postSignUp().then((response) => {
             console.log(response);
-            if (!response.status === 200){
+            if (response.status === 200){
                 this.setState({message: response.data});
             }
+            this.setState({loading: false})
         })
         .catch((err) => {
             this.setState({message: err});
@@ -73,7 +74,7 @@ class Register extends React.Component{
         } else {
             return(
                 <div className="register-body">
-                    {this.state.message && <Popup message = {this.state.message} history={this.props.history} pageChange="/profile" page = "Login" />}
+                    {this.state.message && <Popup message = {this.state.message} history={this.props.history} pageChange="/login" page = "Register" />}
                     <div className="register-div">
                         <h1>Register a new account</h1>
                         <div>

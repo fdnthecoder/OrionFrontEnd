@@ -8,3 +8,8 @@ heroku-run:
 	heroku git:remote -a orion-crepe-frontend
 	heroku config:set PYTHONPATH="/app"
 	heroku config:set ORION_HOME="/app"
+
+local-test:
+	LOCAL_TEST=true
+	export LOCAL_TEST
+

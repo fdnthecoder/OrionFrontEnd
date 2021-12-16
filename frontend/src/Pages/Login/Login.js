@@ -36,7 +36,7 @@ class Login extends React.Component{
     }
 
     async authenticateLogin(){
-        this.setState({loading: false});
+        this.setState({loading: true});
         return await axios.post(`${SIGNIN_URL}`, 
             {
             username: this.state.username,
@@ -53,6 +53,7 @@ class Login extends React.Component{
             } else {
                 console.log(response);
             }
+            this.setState({loading: false})
             this.setState({message: response.data.Status});
 
         })

@@ -8,7 +8,7 @@ const Board = (props) => {
     return(
         <Container fluid>
             <Row xs={1} md={2} className="g-4">
-            {props.data.map(listings => (
+            {props.data?.map(listings => (
                 <Col key={"col" + listings.postID}>
                     <Card key={"entry" + listings.postID} >
                         <Card.Header key={"company" + listings.company}>

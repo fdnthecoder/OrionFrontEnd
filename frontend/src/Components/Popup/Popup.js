@@ -9,7 +9,6 @@ const Popup = (props) => {
         setShow(false);
         closePushed = true;
         if (message === "Success" || message === "Does exist"){
-            console.log("inside if statement")
             props.history.push(props.pageChange);
             window.location.reload(false);
         }
