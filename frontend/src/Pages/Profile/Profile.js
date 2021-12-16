@@ -73,7 +73,7 @@ class Profile extends React.Component{
         this.changeStatus(event.target.id, event.target.name).then((response) => {
             this.setState({loading: false})
             console.log(response);
-            const message = response.data.Status + " - Status successfully changed!"
+            const message = response.data.Status
             this.setState({message: message})
         }).catch((err) => { 
             console.log(err);
